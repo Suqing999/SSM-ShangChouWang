@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: cloud-consumer-user-feign
+    
+server:
+  port: 1000  
+ 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true  
+
+feign:
+  hystrix:
+    enabled: true
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream # 访问/actuator/hystrix.stream能看到不断更新的监控流
